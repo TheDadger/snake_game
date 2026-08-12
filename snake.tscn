@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ctqf43ucb8r4c"]
+
+[ext_resource type="Texture2D" uid="uid://cts0o1rcb3syo" path="res://sprites/snake_head.png" id="1_baghe"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4kxuq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_baghe")
+}],
+"loop": 1,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_baghe")
+}],
+"loop": 1,
+"name": &"eat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_baghe")
+}],
+"loop": 1,
+"name": &"move",
+"speed": 5.0
+}]
+
+[node name="Snake" type="RigidBody2D" unique_id=410241489]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=594851656]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_4kxuq")
+animation = &"move"
