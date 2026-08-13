@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cts0o1rcb3syo"
-path="res://.godot/imported/snake_head.png-11753591bff2e69f5b101c8b98e1c600.ctex"
+uid="uid://ce4j05snnn344"
+path="res://.godot/imported/apple.png-d0c5a0e024efc439723035186c67a74a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/snake_head.png"
-dest_files=["res://.godot/imported/snake_head.png-11753591bff2e69f5b101c8b98e1c600.ctex"]
+source_file="res://assets/apple.png"
+dest_files=["res://.godot/imported/apple.png-d0c5a0e024efc439723035186c67a74a.ctex"]
 
 [params]
 
