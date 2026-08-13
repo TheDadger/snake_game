@@ -9,6 +9,13 @@ bg_color = Color(0.4588343, 0.30629134, 0.7078505, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mti6b"]
 bg_color = Color(0.23702621, 0.66191, 0.75797045, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mm1bc"]
+bg_color = Color(0.63205856, 0.5286975, 0.8797394, 1)
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
 [node name="GameOverMenu" type="CanvasLayer" unique_id=138641869]
 script = ExtResource("1_io285")
 
@@ -17,17 +24,17 @@ anchors_preset = -1
 anchor_right = 0.080000006
 anchor_bottom = 0.019000001
 offset_left = 72.0
-offset_top = 520.0
+offset_top = 503.0
 offset_right = 385.6
-offset_bottom = 654.05
+offset_bottom = 637.05
 theme_override_styles/panel = SubResource("StyleBoxFlat_4kxuq")
 metadata/_edit_group_ = true
 
 [node name="ResultLabel" type="Label" parent="." unique_id=1528772265]
 offset_left = 104.0
-offset_top = 520.0
+offset_top = 504.0
 offset_right = 396.0
-offset_bottom = 607.0
+offset_bottom = 591.0
 theme_override_fonts/font = ExtResource("1_ckcbh")
 theme_override_font_sizes/font_size = 54
 text = "Game Over!"
@@ -37,14 +44,24 @@ metadata/_edit_group_ = true
 
 [node name="RestartButton" type="Button" parent="." unique_id=851622711]
 offset_left = 148.0
-offset_top = 600.0
+offset_top = 585.0
 offset_right = 343.0
-offset_bottom = 654.0
+offset_bottom = 639.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_ckcbh")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_mti6b")
 text = "Play Again"
 metadata/_edit_group_ = true
+
+[node name="FinaScoreLabel" type="Label" parent="." unique_id=1313273241]
+offset_left = 120.0
+offset_top = 264.0
+offset_right = 378.0
+offset_bottom = 329.0
+theme_override_fonts/font = ExtResource("1_ckcbh")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_mm1bc")
+text = "You Scored: 0"
 
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

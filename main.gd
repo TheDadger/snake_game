@@ -136,6 +136,7 @@ func move_food():
 func end_game():
 	$GameOverMenu.show()
 	$MoveTimer.stop()
+	$GameOverMenu/FinaScoreLabel.text = "You Scored: " + str(score)
 	game_started = false
 	get_tree().paused = true
 
