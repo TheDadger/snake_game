@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dpfpwjx6j1gba"]
+
+[ext_resource type="Texture2D" uid="uid://b7xk57s667qk3" path="res://assets/snake_board.png" id="1_i37i2"]
+[ext_resource type="Script" uid="uid://dj4qe1wjegyq2" path="res://game_board.gd" id="2_17g6i"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xh13x"]
+texture = ExtResource("1_i37i2")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4kxuq"]
+tile_size = Vector2i(50, 50)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_xh13x")
+
+[node name="GameBoard" type="TileMapLayer" unique_id=387707511]
+position = Vector2(15, 50)
+tile_set = SubResource("TileSet_4kxuq")
+script = ExtResource("2_17g6i")

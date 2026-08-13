@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://bi4x75xfnk62n" path="res://main.gd" id="1_brvut"]
 [ext_resource type="FontFile" uid="uid://bgb4cru75656k" path="res://assets/MaldiniBold.ttf" id="2_0ha60"]
 [ext_resource type="PackedScene" uid="uid://b602vwfh7ft1p" path="res://scene/snake.tscn" id="2_brvut"]
-[ext_resource type="Texture2D" uid="uid://ba886hyef2i3x" path="res://assets/bg.png" id="3_4j5ol"]
 [ext_resource type="Texture2D" uid="uid://ce4j05snnn344" path="res://assets/apple.png" id="5_0ha60"]
 [ext_resource type="PackedScene" uid="uid://qfgkl1tcxb3i" path="res://scene/game_over_menu.tscn" id="6_4j5ol"]
+[ext_resource type="PackedScene" uid="uid://dpfpwjx6j1gba" path="res://scene/game_board.tscn" id="6_p1hux"]
 
 [sub_resource type="Theme" id="Theme_mti6b"]
 
@@ -25,33 +25,35 @@ snake_scene = ExtResource("2_brvut")
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1984470178]
 
 [node name="ScorePanel" type="Panel" parent="HUD" unique_id=5218682]
-offset_right = 1000.0
+offset_right = 480.0
 offset_bottom = 50.0
 theme = SubResource("Theme_mti6b")
 theme_override_styles/panel = SubResource("StyleBoxFlat_qwqyf")
 
 [node name="ScoreLabel" type="Label" parent="HUD" unique_id=128314487]
-offset_left = 402.0
-offset_top = -4.0
-offset_right = 544.0
-offset_bottom = 51.0
+offset_left = 159.0
+offset_top = -2.0
+offset_right = 301.0
+offset_bottom = 53.0
 theme_override_fonts/font = ExtResource("2_0ha60")
 theme_override_font_sizes/font_size = 40
 text = "Score : 0"
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1890480497]
-position = Vector2(500, 550)
-texture = ExtResource("3_4j5ol")
-
 [node name="MoveTimer" type="Timer" parent="." unique_id=1809719453]
-wait_time = 0.009999999999999998
-
-[node name="Food" type="Sprite2D" parent="." unique_id=1930416790]
-texture = ExtResource("5_0ha60")
-offset = Vector2(25, 25)
+wait_time = 0.17
 
 [node name="GameOverMenu" parent="." unique_id=138641869 instance=ExtResource("6_4j5ol")]
 process_mode = 2
+
+[node name="Grid" type="Node2D" parent="." unique_id=1944688963]
+
+[node name="GameBoard" parent="Grid" unique_id=387707511 instance=ExtResource("6_p1hux")]
+position = Vector2(0, 0)
+
+[node name="Food" type="Sprite2D" parent="Grid" unique_id=1930416790]
+z_index = 1
+texture = ExtResource("5_0ha60")
+offset = Vector2(25, 25)
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="restart" from="GameOverMenu" to="." method="_on_game_over_menu_restart"]
