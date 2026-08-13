@@ -42,15 +42,18 @@ text = "Score : 0"
 [node name="MoveTimer" type="Timer" parent="." unique_id=1809719453]
 wait_time = 0.17
 
-[node name="Food" type="Sprite2D" parent="." unique_id=1930416790]
-z_index = 1
-texture = ExtResource("5_0ha60")
-offset = Vector2(25, 25)
-
 [node name="GameOverMenu" parent="." unique_id=138641869 instance=ExtResource("6_4j5ol")]
 process_mode = 2
 
-[node name="GameBoard" parent="." unique_id=387707511 instance=ExtResource("6_p1hux")]
+[node name="Grid" type="Node2D" parent="." unique_id=1944688963]
+
+[node name="GameBoard" parent="Grid" unique_id=387707511 instance=ExtResource("6_p1hux")]
+position = Vector2(0, 0)
+
+[node name="Food" type="Sprite2D" parent="Grid" unique_id=1930416790]
+z_index = 1
+texture = ExtResource("5_0ha60")
+offset = Vector2(25, 25)
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="restart" from="GameOverMenu" to="." method="_on_game_over_menu_restart"]

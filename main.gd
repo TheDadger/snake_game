@@ -27,6 +27,7 @@ var food_pos : Vector2
 var regen_food : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Grid.position = Vector2(left_margin,cell_size)
 	new_game()
 	
 func new_game():
@@ -51,7 +52,7 @@ func generate_snake():
 func add_segment(pos):
 	snake_data.append(pos)
 	var snake_segment = snake_scene.instantiate()
-	snake_segment.position = (pos * cell_size) + Vector2(left_margin, cell_size)
+	snake_segment.position = (pos * cell_size) + Vector2(left_margin,cell_size)
 	add_child(snake_segment)
 	snake.append(snake_segment)
 
@@ -95,23 +96,25 @@ func _on_move_timer_timeout() -> void:
 	old_data = [] + snake_data
 	snake_data[0] += move_direction
 	
+	if is_out_of_bounds(snake_data[0]) or is_self_collision():
+		end_game()
+		return
+	
 	for i in range(len(snake_data)):
 		if i > 0 :
 			snake_data[i] = old_data[i-1]
 		snake[i].position = (snake_data[i] * cell_size) + Vector2(left_margin,cell_size)
 	
-	check_out_of_bounds()
-	check_self_eaten()
 	check_food_eaten()
-	
-func check_out_of_bounds():
-	if snake_data[0].x < 0  or snake_data[0]. x > GlobalVariable.columns - 1 or snake_data[0].y < 0 or snake_data[0].y > GlobalVariable.rows - 1:
-		end_game()
 
-func check_self_eaten():
+func is_out_of_bounds(pos: Vector2) -> bool:
+	return pos.x < 0 or pos.x > GlobalVariable.columns - 1 or pos.y < 0 or pos.y > GlobalVariable.rows - 1
+
+func is_self_collision() -> bool:
 	for i in range(1, len(snake_data)):
 		if snake_data[0] == snake_data[i]:
-			end_game()
+			return true
+	return false
 			
 func check_food_eaten():
 	if snake_data[0] == food_pos:
@@ -127,7 +130,7 @@ func move_food():
 		for i in snake_data:
 			if food_pos == i:
 				regen_food = true
-	$Food.position = (food_pos * cell_size) + Vector2(left_margin,cell_size)
+	$Grid/Food.position = (food_pos * cell_size) 
 	regen_food = true
 	
 func end_game():
