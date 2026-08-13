@@ -5,8 +5,8 @@ var score :int
 var game_started : bool = false
 
 #cell variable
-var cell : int = 20 
 var cell_size : int = 50 
+var left_margin := 15
 
 #snake variables
 var old_data : Array
@@ -14,7 +14,7 @@ var snake_data : Array
 var snake : Array
 
 #movement variable
-var start_pos = Vector2(9,9)
+var start_pos = Vector2(4,6) 
 var up = Vector2(0,-1)
 var down = Vector2(0,1)
 var right = Vector2(1,0)
@@ -51,7 +51,7 @@ func generate_snake():
 func add_segment(pos):
 	snake_data.append(pos)
 	var snake_segment = snake_scene.instantiate()
-	snake_segment.position = (pos * cell_size) + Vector2(0, cell_size)
+	snake_segment.position = (pos * cell_size) + Vector2(left_margin, cell_size)
 	add_child(snake_segment)
 	snake.append(snake_segment)
 
@@ -98,14 +98,14 @@ func _on_move_timer_timeout() -> void:
 	for i in range(len(snake_data)):
 		if i > 0 :
 			snake_data[i] = old_data[i-1]
-		snake[i].position = (snake_data[i] * cell_size) + Vector2(0,cell_size)
+		snake[i].position = (snake_data[i] * cell_size) + Vector2(left_margin,cell_size)
 	
 	check_out_of_bounds()
 	check_self_eaten()
 	check_food_eaten()
 	
 func check_out_of_bounds():
-	if snake_data[0].x < 0  or snake_data[0]. x > cell - 1 or snake_data[0].y < 0 or snake_data[0].y > cell - 1:
+	if snake_data[0].x < 0  or snake_data[0]. x > GlobalVariable.columns - 1 or snake_data[0].y < 0 or snake_data[0].y > GlobalVariable.rows - 1:
 		end_game()
 
 func check_self_eaten():
@@ -123,11 +123,11 @@ func check_food_eaten():
 func move_food():
 	while regen_food:
 		regen_food = false
-		food_pos = Vector2(randi_range(0, cell - 1), randi_range(0, cell-1))
+		food_pos = Vector2(randi_range(0, GlobalVariable.columns - 1), randi_range(0, GlobalVariable.rows - 1))
 		for i in snake_data:
 			if food_pos == i:
 				regen_food = true
-	$Food.position = (food_pos * cell_size) + Vector2(0,cell_size)
+	$Food.position = (food_pos * cell_size) + Vector2(left_margin,cell_size)
 	regen_food = true
 	
 func end_game():
