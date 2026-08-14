@@ -21,10 +21,12 @@ GlobalVariable="*uid://6i2crgrkbprv"
 
 [display]
 
-window/size/viewport_width=480
-window/size/viewport_height=720
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/energy_saving/keep_screen_on=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/handheld/orientation=1
 
 [input]
 

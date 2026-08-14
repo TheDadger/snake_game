@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bi4x75xfnk62n" path="res://main.gd" id="1_brvut"]
 [ext_resource type="FontFile" uid="uid://bgb4cru75656k" path="res://assets/MaldiniBold.ttf" id="2_0ha60"]
 [ext_resource type="PackedScene" uid="uid://b602vwfh7ft1p" path="res://scene/snake.tscn" id="2_brvut"]
+[ext_resource type="Texture2D" uid="uid://caf8ff47r37r6" path="res://assets/trophy.png" id="4_of57s"]
 [ext_resource type="Texture2D" uid="uid://ce4j05snnn344" path="res://assets/apple.png" id="5_0ha60"]
 [ext_resource type="PackedScene" uid="uid://qfgkl1tcxb3i" path="res://scene/game_over_menu.tscn" id="6_4j5ol"]
 [ext_resource type="PackedScene" uid="uid://dpfpwjx6j1gba" path="res://scene/game_board.tscn" id="6_p1hux"]
@@ -26,19 +27,55 @@ snake_scene = ExtResource("2_brvut")
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1984470178]
 
 [node name="ScorePanel" type="Panel" parent="HUD" unique_id=5218682]
-offset_right = 480.0
+offset_right = 720.0
 offset_bottom = 50.0
 theme = SubResource("Theme_mti6b")
 theme_override_styles/panel = SubResource("StyleBoxFlat_qwqyf")
 
-[node name="ScoreLabel" type="Label" parent="HUD" unique_id=128314487]
-offset_left = 159.0
-offset_top = -2.0
-offset_right = 301.0
-offset_bottom = 53.0
+[node name="MessageLabel" type="Label" parent="HUD" unique_id=128314487]
+offset_left = 179.0
+offset_right = 524.0
+offset_bottom = 55.0
 theme_override_fonts/font = ExtResource("2_0ha60")
 theme_override_font_sizes/font_size = 40
-text = "Score : 0"
+text = "Message Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Trophy" type="Sprite2D" parent="HUD" unique_id=579178685]
+position = Vector2(33.999996, 23.999996)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("4_of57s")
+region_enabled = true
+region_rect = Rect2(383.7339, 81.621994, 577.2201, 674.43604)
+metadata/_edit_group_ = true
+
+[node name="HighScoreLabel" type="Label" parent="HUD" unique_id=20053251]
+offset_left = 62.0
+offset_top = 4.0
+offset_right = 102.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("2_0ha60")
+theme_override_font_sizes/font_size = 48
+text = "0"
+metadata/_edit_group_ = true
+
+[node name="Apple" type="Sprite2D" parent="HUD" unique_id=607513594]
+position = Vector2(600.99994, 24)
+texture = ExtResource("5_0ha60")
+region_enabled = true
+region_rect = Rect2(-0.5683918, -0.09782028, 51.490738, 50.726032)
+metadata/_edit_group_ = true
+
+[node name="ScoreLabel" type="Label" parent="HUD" unique_id=614036939]
+offset_left = 631.0
+offset_top = 4.0
+offset_right = 671.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("2_0ha60")
+theme_override_font_sizes/font_size = 48
+text = "0"
+metadata/_edit_group_ = true
 
 [node name="MoveTimer" type="Timer" parent="." unique_id=1809719453]
 wait_time = 0.17

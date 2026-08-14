@@ -1,12 +1,9 @@
 extends Node
 
 @export var snake_scene : PackedScene
-var score :int
+var score :=0
+var high_score := 0
 var game_started : bool = false
-
-#cell variable
-var cell_size : int = 50 
-var left_margin := 15
 
 #snake variables
 var old_data : Array
@@ -14,7 +11,6 @@ var snake_data : Array
 var snake : Array
 
 #movement variable
-var start_pos = Vector2(4,6) 
 
 var can_move : bool
 
@@ -23,14 +19,16 @@ var food_pos : Vector2
 var regen_food : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Grid.position = Vector2(left_margin,cell_size)
+	$Grid.position = Vector2(GlobalVariable.left_margin,GlobalVariable.cell_size)
 	new_game()
 	
 func new_game():
 	get_tree().paused= false
 	get_tree().call_group("snake_group","queue_free")
-	score = 0 
-	$HUD/ScoreLabel.text = "Score:" + str(score)
+	
+	score = 0
+	$HUD/MessageLabel.text ="Move to Start Game !!"
+	$HUD/ScoreLabel.text = str(score)
 	GlobalVariable.move_direction =GlobalVariable.up
 	can_move = true
 	generate_snake()
@@ -43,12 +41,12 @@ func generate_snake():
 	snake.clear()
 	
 	for i in range(3):
-		add_segment(start_pos + Vector2(0,i))
+		add_segment(GlobalVariable.start_pos + Vector2(0,i))
 		
 func add_segment(pos):
 	snake_data.append(pos)
 	var snake_segment = snake_scene.instantiate()
-	snake_segment.position = (pos * cell_size) + Vector2(left_margin,cell_size)
+	snake_segment.position = (pos * GlobalVariable.cell_size) + Vector2(GlobalVariable.left_margin,GlobalVariable.cell_size)
 	add_child(snake_segment)
 	snake.append(snake_segment)
 
@@ -85,6 +83,8 @@ func move_snake():
 func start_game():
 	game_started = true
 	$MoveTimer.start()
+	$HUD/MessageLabel.text = "Snake Game"
+	$HUD/ScoreLabel.text = str(score)
 
 func _on_move_timer_timeout() -> void:
 	can_move = true
@@ -99,7 +99,7 @@ func _on_move_timer_timeout() -> void:
 	for i in range(len(snake_data)):
 		if i > 0 :
 			snake_data[i] = old_data[i-1]
-		snake[i].position = (snake_data[i] * cell_size) + Vector2(left_margin,cell_size)
+		snake[i].position = (snake_data[i] * GlobalVariable.cell_size) + Vector2(GlobalVariable.left_margin,GlobalVariable.cell_size)
 	
 	check_food_eaten()
 
@@ -115,7 +115,10 @@ func is_self_collision() -> bool:
 func check_food_eaten():
 	if snake_data[0] == food_pos:
 		score +=1 
-		$HUD/ScoreLabel.text = "Score: " + str(score)
+		$HUD/ScoreLabel.text = str(score)
+		if score > high_score:
+			high_score = score
+		$HUD/HighScoreLabel.text = str(high_score)
 		move_food()
 		add_segment(old_data[-1])
 	
@@ -126,7 +129,7 @@ func move_food():
 		for i in snake_data:
 			if food_pos == i:
 				regen_food = true
-	$Grid/Food.position = (food_pos * cell_size) 
+	$Grid/Food.position = (food_pos * GlobalVariable.cell_size) 
 	regen_food = true
 	
 func end_game():

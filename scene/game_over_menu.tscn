@@ -29,18 +29,18 @@ script = ExtResource("1_io285")
 anchors_preset = -1
 anchor_right = 0.080000006
 anchor_bottom = 0.019000001
-offset_left = 72.0
-offset_top = 503.0
-offset_right = 385.6
-offset_bottom = 637.05
+offset_left = 160.0
+offset_top = 900.0
+offset_right = 473.6
+offset_bottom = 1034.05
 theme_override_styles/panel = SubResource("StyleBoxFlat_4kxuq")
 metadata/_edit_group_ = true
 
 [node name="ResultLabel" type="Label" parent="." unique_id=1528772265]
-offset_left = 104.0
-offset_top = 504.0
-offset_right = 396.0
-offset_bottom = 591.0
+offset_left = 200.0
+offset_top = 890.0
+offset_right = 492.0
+offset_bottom = 977.0
 theme_override_fonts/font = ExtResource("1_ckcbh")
 theme_override_font_sizes/font_size = 54
 text = "Game Over!"
@@ -49,10 +49,10 @@ vertical_alignment = 1
 metadata/_edit_group_ = true
 
 [node name="RestartButton" type="Button" parent="." unique_id=851622711]
-offset_left = 148.0
-offset_top = 585.0
-offset_right = 343.0
-offset_bottom = 639.0
+offset_left = 250.0
+offset_top = 985.0
+offset_right = 445.0
+offset_bottom = 1039.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_ckcbh")
 theme_override_font_sizes/font_size = 48
@@ -62,10 +62,10 @@ text = "Play Again"
 metadata/_edit_group_ = true
 
 [node name="FinaScoreLabel" type="Label" parent="." unique_id=1313273241]
-offset_left = 120.0
-offset_top = 264.0
-offset_right = 378.0
-offset_bottom = 329.0
+offset_left = 220.0
+offset_top = 700.0
+offset_right = 478.0
+offset_bottom = 765.0
 theme_override_fonts/font = ExtResource("1_ckcbh")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_mm1bc")
