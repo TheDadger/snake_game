@@ -27,7 +27,7 @@ func new_game():
 	get_tree().call_group("snake_group","queue_free")
 	
 	score = 0
-	$HUD/MessageLabel.text ="Move to Start Game !!"
+	$HUD/MessageLabel.text ="Move to Start !!"
 	$HUD/ScoreLabel.text = str(score)
 	GlobalVariable.move_direction =GlobalVariable.up
 	can_move = true
@@ -60,23 +60,27 @@ func move_snake():
 		if Input.is_action_just_pressed("move_up") and GlobalVariable.move_direction != GlobalVariable.down:
 			GlobalVariable.move_direction = GlobalVariable.up
 			can_move = false
+			$MoveSound.play()
 			if not game_started:
 				start_game()
 		if Input.is_action_just_pressed("move_down") and GlobalVariable.move_direction != GlobalVariable.up:
 			GlobalVariable.move_direction = GlobalVariable.down
 			can_move = false
+			$MoveSound.play()
 			if not game_started:
 				start_game()
 
 		if Input.is_action_just_pressed("move_right") and GlobalVariable.move_direction != GlobalVariable.left:
 			GlobalVariable.move_direction = GlobalVariable.right
 			can_move = false
+			$MoveSound.play()
 			if not game_started:
 				start_game()
 
 		if Input.is_action_just_pressed("move_left") and GlobalVariable.move_direction != GlobalVariable.right:
 			GlobalVariable.move_direction = GlobalVariable.left
 			can_move = false
+			$MoveSound.play()
 			if not game_started:
 				start_game()
 
@@ -115,6 +119,7 @@ func is_self_collision() -> bool:
 func check_food_eaten():
 	if snake_data[0] == food_pos:
 		score +=1 
+		$FoodSound.play()
 		$HUD/ScoreLabel.text = str(score)
 		if score > high_score:
 			high_score = score
@@ -135,6 +140,7 @@ func move_food():
 func end_game():
 	$GameOverMenu.show()
 	$MoveTimer.stop()
+	$GameOverMenu/DeathSound.play()
 	$GameOverMenu/FinaScoreLabel.text = "You Scored: " + str(score)
 	game_started = false
 	get_tree().paused = true
