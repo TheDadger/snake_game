@@ -15,12 +15,8 @@ var snake : Array
 
 #movement variable
 var start_pos = Vector2(4,6) 
-var up = Vector2(0,-1)
-var down = Vector2(0,1)
-var right = Vector2(1,0)
-var left = Vector2(-1,0)
+
 var can_move : bool
-var move_direction
 
 #food variable
 var food_pos : Vector2
@@ -35,7 +31,7 @@ func new_game():
 	get_tree().call_group("snake_group","queue_free")
 	score = 0 
 	$HUD/ScoreLabel.text = "Score:" + str(score)
-	move_direction =up
+	GlobalVariable.move_direction =GlobalVariable.up
 	can_move = true
 	generate_snake()
 	move_food()
@@ -63,25 +59,25 @@ func _process(delta: float) -> void:
 	
 func move_snake():
 	if can_move:
-		if Input.is_action_just_pressed("move_up") and move_direction != down:
-			move_direction = up
+		if Input.is_action_just_pressed("move_up") and GlobalVariable.move_direction != GlobalVariable.down:
+			GlobalVariable.move_direction = GlobalVariable.up
 			can_move = false
 			if not game_started:
 				start_game()
-		if Input.is_action_just_pressed("move_down") and move_direction != up:
-			move_direction = down
-			can_move = false
-			if not game_started:
-				start_game()
-
-		if Input.is_action_just_pressed("move_right") and move_direction != left:
-			move_direction = right
+		if Input.is_action_just_pressed("move_down") and GlobalVariable.move_direction != GlobalVariable.up:
+			GlobalVariable.move_direction = GlobalVariable.down
 			can_move = false
 			if not game_started:
 				start_game()
 
-		if Input.is_action_just_pressed("move_left") and move_direction != right:
-			move_direction = left
+		if Input.is_action_just_pressed("move_right") and GlobalVariable.move_direction != GlobalVariable.left:
+			GlobalVariable.move_direction = GlobalVariable.right
+			can_move = false
+			if not game_started:
+				start_game()
+
+		if Input.is_action_just_pressed("move_left") and GlobalVariable.move_direction != GlobalVariable.right:
+			GlobalVariable.move_direction = GlobalVariable.left
 			can_move = false
 			if not game_started:
 				start_game()
@@ -94,7 +90,7 @@ func _on_move_timer_timeout() -> void:
 	can_move = true
 	
 	old_data = [] + snake_data
-	snake_data[0] += move_direction
+	snake_data[0] += GlobalVariable.move_direction
 	
 	if is_out_of_bounds(snake_data[0]) or is_self_collision():
 		end_game()

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c4oik5g7edsrf"]
+
+[ext_resource type="Script" uid="uid://dort3nvyo4x2m" path="res://swipe_scene.gd" id="1_eisuu"]
+
+[node name="SwipeScene" type="Node2D" unique_id=457525543]
+script = ExtResource("1_eisuu")
