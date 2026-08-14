@@ -1,7 +1,8 @@
 extends Node
 
 @export var snake_scene : PackedScene
-var score :int
+var score :=0
+var high_score := 0
 var game_started : bool = false
 
 #snake variables
@@ -24,8 +25,10 @@ func _ready() -> void:
 func new_game():
 	get_tree().paused= false
 	get_tree().call_group("snake_group","queue_free")
-	score = 0 
-	$HUD/ScoreLabel.text = "Score:" + str(score)
+	
+	score = 0
+	$HUD/MessageLabel.text ="Move to Start Game !!"
+	$HUD/ScoreLabel.text = str(score)
 	GlobalVariable.move_direction =GlobalVariable.up
 	can_move = true
 	generate_snake()
@@ -80,6 +83,8 @@ func move_snake():
 func start_game():
 	game_started = true
 	$MoveTimer.start()
+	$HUD/MessageLabel.text = "Snake Game"
+	$HUD/ScoreLabel.text = str(score)
 
 func _on_move_timer_timeout() -> void:
 	can_move = true
@@ -110,7 +115,10 @@ func is_self_collision() -> bool:
 func check_food_eaten():
 	if snake_data[0] == food_pos:
 		score +=1 
-		$HUD/ScoreLabel.text = "Score: " + str(score)
+		$HUD/ScoreLabel.text = str(score)
+		if score > high_score:
+			high_score = score
+		$HUD/HighScoreLabel.text = str(high_score)
 		move_food()
 		add_segment(old_data[-1])
 	
