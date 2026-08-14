@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dsnj7uasuikco" path="res://game_over_menu.gd" id="1_io285"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kxuq"]
-bg_color = Color(0.4588343, 0.30629134, 0.7078505, 1)
+bg_color = Color(0.20528784, 0.45068908, 0.47891653, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mti6b"]
 bg_color = Color(0.23702621, 0.66191, 0.75797045, 1)
@@ -16,7 +16,7 @@ action = &"play_again"
 events = [SubResource("InputEventAction_fbw3d")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mm1bc"]
-bg_color = Color(0.63205856, 0.5286975, 0.8797394, 1)
+bg_color = Color(0.22845727, 0.5771273, 0.55961794, 1)
 expand_margin_left = 10.0
 expand_margin_top = 5.0
 expand_margin_right = 10.0

@@ -65,7 +65,14 @@ bus = &"SFX"
 stream = SubResource("AudioStreamRandomizer_4kxuq")
 bus = &"SFX"
 
+[node name="Background" type="ColorRect" parent="." unique_id=197282515]
+z_index = -1
+offset_right = 720.0
+offset_bottom = 1280.0
+color = Color(0.5099913, 0.8202834, 0.9762463, 0.73333335)
+
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1984470178]
+process_mode = 3
 
 [node name="ScorePanel" type="Panel" parent="HUD" unique_id=5218682]
 offset_right = 720.0
@@ -140,7 +147,7 @@ texture_normal = ExtResource("12_jcbur")
 texture_pressed = ExtResource("13_smf0o")
 
 [node name="MoveTimer" type="Timer" parent="." unique_id=1809719453]
-wait_time = 0.17
+wait_time = 0.18
 
 [node name="GameOverMenu" parent="." unique_id=138641869 instance=ExtResource("6_4j5ol")]
 process_mode = 2

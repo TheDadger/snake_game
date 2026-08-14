@@ -20,6 +20,7 @@ func _ready() -> void:
 	rows = int(screen_size.y / cell_size) 
 	columns = int(screen_size.x / cell_size)
 	left_margin = screen_size.x - (columns * cell_size)
+	left_margin *= 2	
 	rows -=1
 	columns -=1
 	
