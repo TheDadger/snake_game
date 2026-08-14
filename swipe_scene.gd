@@ -21,28 +21,28 @@ func check_swipe():
 	
 	if swipe_direction.x > 0.7 and GlobalVariable.move_direction != GlobalVariable.left :
 		GlobalVariable.move_direction = GlobalVariable.right
-		$MoveSound.play()
+		owner.get_node("MoveSound").play()
 		get_parent().can_move = false
 		if not get_parent().game_started:
 			get_parent().start_game()
 			
 	if swipe_direction.x < -0.7 and GlobalVariable.move_direction != GlobalVariable.right:
 		GlobalVariable.move_direction = GlobalVariable.left
-		$MoveSound.play()
-		get_parent().can_move = false
+		owner.get_node("MoveSound").play()
 		if not get_parent().game_started:
 			get_parent().start_game()
 			
 	if swipe_direction.y > 0.7 and GlobalVariable.move_direction != GlobalVariable.up:
 		GlobalVariable.move_direction = GlobalVariable.down
-		$MoveSound.play()
+		owner.get_node("MoveSound").play()
+
 		get_parent().can_move = false
 		if not get_parent().game_started:
 			get_parent().start_game()
 			
 	if swipe_direction.y < -0.7 and GlobalVariable.move_direction != GlobalVariable.down:
 		GlobalVariable.move_direction = GlobalVariable.up 
-		$MoveSound.play()
+		owner.get_node("MoveSound").play()
 		get_parent().can_move = false
 		if not get_parent().game_started:
 			get_parent().start_game()

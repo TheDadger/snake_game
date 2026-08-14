@@ -148,3 +148,12 @@ func end_game():
 
 func _on_game_over_menu_restart() -> void:
 	new_game()
+
+func _on_music_toggled(toggled_on: bool) -> void:
+	var busmusic = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_mute(busmusic,not AudioServer.is_bus_mute(busmusic))
+
+
+func _on_sound_toggle_toggled(toggled_on: bool) -> void:
+	var bussfx = AudioServer.get_bus_index("SFX")
+	AudioServer.set_bus_mute(bussfx,not AudioServer.is_bus_mute(bussfx))
