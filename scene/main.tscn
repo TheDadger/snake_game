@@ -26,15 +26,15 @@ snake_scene = ExtResource("2_brvut")
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1984470178]
 
 [node name="ScorePanel" type="Panel" parent="HUD" unique_id=5218682]
-offset_right = 480.0
+offset_right = 720.0
 offset_bottom = 50.0
 theme = SubResource("Theme_mti6b")
 theme_override_styles/panel = SubResource("StyleBoxFlat_qwqyf")
 
 [node name="ScoreLabel" type="Label" parent="HUD" unique_id=128314487]
-offset_left = 159.0
+offset_left = 280.0
 offset_top = -2.0
-offset_right = 301.0
+offset_right = 422.0
 offset_bottom = 53.0
 theme_override_fonts/font = ExtResource("2_0ha60")
 theme_override_font_sizes/font_size = 40

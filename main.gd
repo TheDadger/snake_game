@@ -4,17 +4,12 @@ extends Node
 var score :int
 var game_started : bool = false
 
-#cell variable
-var cell_size : int = 50 
-var left_margin := 15
-
 #snake variables
 var old_data : Array
 var snake_data : Array
 var snake : Array
 
 #movement variable
-var start_pos = Vector2(4,6) 
 
 var can_move : bool
 
@@ -23,7 +18,7 @@ var food_pos : Vector2
 var regen_food : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Grid.position = Vector2(left_margin,cell_size)
+	$Grid.position = Vector2(GlobalVariable.left_margin,GlobalVariable.cell_size)
 	new_game()
 	
 func new_game():
@@ -43,12 +38,12 @@ func generate_snake():
 	snake.clear()
 	
 	for i in range(3):
-		add_segment(start_pos + Vector2(0,i))
+		add_segment(GlobalVariable.start_pos + Vector2(0,i))
 		
 func add_segment(pos):
 	snake_data.append(pos)
 	var snake_segment = snake_scene.instantiate()
-	snake_segment.position = (pos * cell_size) + Vector2(left_margin,cell_size)
+	snake_segment.position = (pos * GlobalVariable.cell_size) + Vector2(GlobalVariable.left_margin,GlobalVariable.cell_size)
 	add_child(snake_segment)
 	snake.append(snake_segment)
 
@@ -99,7 +94,7 @@ func _on_move_timer_timeout() -> void:
 	for i in range(len(snake_data)):
 		if i > 0 :
 			snake_data[i] = old_data[i-1]
-		snake[i].position = (snake_data[i] * cell_size) + Vector2(left_margin,cell_size)
+		snake[i].position = (snake_data[i] * GlobalVariable.cell_size) + Vector2(GlobalVariable.left_margin,GlobalVariable.cell_size)
 	
 	check_food_eaten()
 
@@ -126,7 +121,7 @@ func move_food():
 		for i in snake_data:
 			if food_pos == i:
 				regen_food = true
-	$Grid/Food.position = (food_pos * cell_size) 
+	$Grid/Food.position = (food_pos * GlobalVariable.cell_size) 
 	regen_food = true
 	
 func end_game():
