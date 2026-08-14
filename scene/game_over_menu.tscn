@@ -9,6 +9,12 @@ bg_color = Color(0.4588343, 0.30629134, 0.7078505, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mti6b"]
 bg_color = Color(0.23702621, 0.66191, 0.75797045, 1)
 
+[sub_resource type="InputEventAction" id="InputEventAction_fbw3d"]
+action = &"play_again"
+
+[sub_resource type="Shortcut" id="Shortcut_io285"]
+events = [SubResource("InputEventAction_fbw3d")]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mm1bc"]
 bg_color = Color(0.63205856, 0.5286975, 0.8797394, 1)
 expand_margin_left = 10.0
@@ -51,6 +57,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_ckcbh")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_mti6b")
+shortcut = SubResource("Shortcut_io285")
 text = "Play Again"
 metadata/_edit_group_ = true
 
